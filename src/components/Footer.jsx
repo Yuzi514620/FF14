@@ -3,7 +3,8 @@ import { Box, Typography, Link, Grid, Dialog, DialogTitle, DialogContent, Dialog
 
 const CompanyFooter = () => {
   const [disclaimerOpen, setDisclaimerOpen] = useState(false);
-
+  const images = import.meta.glob('../assets/*.png', { eager: true })
+  const getImage = (name) => images[`../assets/${name}`]?.default
   const handleOpenDisclaimer = () => setDisclaimerOpen(true);
   const handleCloseDisclaimer = () => setDisclaimerOpen(false);
 
@@ -44,9 +45,10 @@ const CompanyFooter = () => {
               加入我們
             </Typography>
             <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-              <Link href="https://discord.gg/KWJcnVmX4H" underline="hover" color="inherit">
+              <Link href="https://discord.gg/KWJcnVmX4H" underline="hover" color="inherit" target="_blank"
+  rel="noopener noreferrer">
                 <img 
-                  src="/discord.png" 
+                  src={getImage('discord.png')} 
                   alt="Discord" 
                   style={{ width: 80, verticalAlign: 'middle' }} 
                 />
@@ -67,9 +69,10 @@ const CompanyFooter = () => {
               追蹤最新消息
             </Typography>
             <Box sx={{ display: "flex", gap: 2 }}>
-              <Link href="https://www.threads.com/@miko.sayuri?hl=zh-tw" underline="hover" color="inherit">
+              <Link href="https://www.threads.com/@miko.sayuri?hl=zh-tw" underline="hover" color="inherit" target="_blank"
+  rel="noopener noreferrer">
                 <img 
-                  src="/threads.png" 
+                  src={getImage('threads.png')} 
                   alt="Threads" 
                   style={{ width: 80, verticalAlign: 'middle' }} 
                 />
